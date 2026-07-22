@@ -1,0 +1,15 @@
+packages:
+  - apps/*
+  - packages/*
+
+allowBuilds:
+  better-sqlite3: true
+  electron: true
+  esbuild: true
+  electron-winstaller: false
+
+minimumReleaseAgeExclude:
+  - electron@43.2.0
+
+overrides:
+  "@electron/node-gyp": 10.2.0-electron.2

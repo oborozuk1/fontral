@@ -1,0 +1,18 @@
+{
+  "name": "fontral",
+  "private": true,
+  "packageManager": "pnpm@11.15.1",
+  "scripts": {
+    "dev": "pnpm --filter @fontral/desktop dev",
+    "build": "pnpm --filter @fontral/desktop build",
+    "pack:win": "pnpm --filter @fontral/desktop pack:win",
+    "dist:win": "pnpm --filter @fontral/desktop dist:win",
+    "dist:mac": "pnpm --filter @fontral/desktop dist:mac",
+    "dist:linux": "pnpm --filter @fontral/desktop dist:linux",
+    "typecheck": "pnpm --filter @fontral/desktop typecheck",
+    "test": "pnpm build && node vitest-electron.mjs"
+  },
+  "devDependencies": {
+    "vitest": "^3.2.4"
+  }
+}

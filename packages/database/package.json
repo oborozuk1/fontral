@@ -1,0 +1,11 @@
+{
+  "name": "@fontral/database",
+  "private": true,
+  "version": "0.1.0",
+  "exports": "./src/index.ts",
+  "dependencies": {
+    "@fontral/contracts": "workspace:*",
+    "better-sqlite3": "^12.1.0"
+  },
+  "devDependencies": { "@types/better-sqlite3": "^7.6.13" }
+}

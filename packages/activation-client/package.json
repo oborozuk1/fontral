@@ -1,0 +1,9 @@
+{
+  "name": "@fontral/activation-client",
+  "private": true,
+  "type": "module",
+  "exports": "./src/index.ts",
+  "dependencies": {
+    "@fontral/contracts": "workspace:*"
+  }
+}

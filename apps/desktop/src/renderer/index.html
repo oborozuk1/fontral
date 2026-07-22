@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fontral</title>
+    <script>
+      (function () {
+        try {
+          var themes = {
+            light: 'light',
+            dark: 'dark',
+            sepia: 'light',
+            sakura: 'light',
+            midnight: 'dark',
+            ocean: 'dark',
+            graphite: 'dark',
+          }
+          var raw = localStorage.getItem('fontral.settings')
+          var theme = 'system'
+          if (raw) {
+            var parsed = JSON.parse(raw)
+            if (parsed && (parsed.theme === 'system' || themes[parsed.theme])) theme = parsed.theme
+          }
+          var resolved = theme === 'system'
+            ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
+            : theme
+          var scheme = themes[resolved] || 'light'
+          document.documentElement.dataset.theme = resolved
+          document.documentElement.style.colorScheme = scheme
+        } catch (e) {}
+      })()
+    </script>
+</head>
+
+<body>
+    <div id="app"></div>
+    <script type="module" src="/src/main.ts"></script>
+</body>
+
+</html>

@@ -1,0 +1,8 @@
+{
+  "name": "@fontral/font-indexer",
+  "private": true,
+  "version": "0.1.0",
+  "exports": "./src/index.ts",
+  "dependencies": { "fontkit": "^2.0.4" },
+  "devDependencies": { "@types/node": "^22.15.30" }
+}

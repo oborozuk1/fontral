@@ -1,0 +1,9 @@
+node_modules/
+dist/
+out/
+release/
+*.ttf
+*.otf
+*.db
+*.db-shm
+*.db-wal

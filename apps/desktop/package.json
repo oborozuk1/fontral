@@ -1,0 +1,104 @@
+{
+  "name": "@fontral/desktop",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Local font library manager",
+  "author": {
+    "name": "Fontral",
+    "email": "oborozuk1@qq.com"
+  },
+  "homepage": "https://github.com/oborozuk1/fontral",
+  "desktopName": "fontral",
+  "type": "module",
+  "main": "./out/main/index.js",
+  "scripts": {
+    "dev": "pnpm run rebuild:native && electron-vite dev",
+    "build": "electron-vite build",
+    "pack:win": "pnpm run build && electron-builder --win dir",
+    "dist:win": "pnpm run build && electron-builder --win nsis portable",
+    "dist:mac": "pnpm run build && electron-builder --mac dmg zip",
+    "dist:linux": "pnpm run build && electron-builder --linux AppImage deb",
+    "typecheck": "vue-tsc --noEmit -p tsconfig.json",
+    "rebuild:native": "electron-rebuild -f -w better-sqlite3"
+  },
+  "dependencies": {
+    "@fontral/activation-client": "workspace:*",
+    "@fontral/contracts": "workspace:*",
+    "@fontral/database": "workspace:*",
+    "@fontral/font-indexer": "workspace:*",
+    "better-sqlite3": "^12.1.0",
+    "fontkit": "^2.0.4",
+    "subset-font": "^2.5.0",
+    "vue": "^3.5.16"
+  },
+  "devDependencies": {
+    "@electron-toolkit/utils": "^4.0.0",
+    "@electron/rebuild": "^4.2.0",
+    "@types/node": "^22.15.30",
+    "@vitejs/plugin-vue": "^5.2.4",
+    "electron": "^43.2.0",
+    "electron-builder": "^26.15.3",
+    "electron-vite": "^5.0.0",
+    "typescript": "^5.8.3",
+    "vite": "^5.4.19",
+    "vue-tsc": "^2.2.10"
+  },
+  "build": {
+    "appId": "com.fontral.desktop",
+    "productName": "Fontral",
+    "asar": true,
+    "electronLanguages": [
+      "en-US",
+      "zh-CN",
+      "zh-TW"
+    ],
+    "npmRebuild": true,
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "out/**/*",
+      "resources/**/*",
+      "package.json",
+      "!node_modules/electron{,/**/*}",
+      "!**/node_modules/**/{*.pdb,*.ipdb,*.iobj,*.lib,*.exp,*.obj}",
+      "!**/node_modules/**/{deps,bin,src,test,tests,__tests__}/**",
+      "!**/node_modules/**/*.{ts,cc,cpp,h,hpp,c,markdown,map}"
+    ],
+    "win": {
+      "target": "nsis",
+      "icon": "resources/icon.png",
+      "artifactName": "${productName}-Setup-${version}.${ext}"
+    },
+    "mac": {
+      "target": [
+        "dmg",
+        "zip"
+      ],
+      "icon": "resources/icon.png",
+      "category": "public.app-category.utilities",
+      "artifactName": "${productName}-${version}-${arch}.${ext}"
+    },
+    "linux": {
+      "target": [
+        "AppImage",
+        "deb"
+      ],
+      "icon": "resources/icon.png",
+      "category": "Utility",
+      "executableName": "fontral",
+      "syncDesktopName": true,
+      "artifactName": "${productName}-${version}-${arch}.${ext}"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "Fontral"
+    },
+    "portable": {
+      "artifactName": "${productName}-Portable-${version}.${ext}"
+    }
+  }
+}
