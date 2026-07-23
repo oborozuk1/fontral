@@ -62,7 +62,7 @@
       "package.json",
       "!node_modules/electron{,/**/*}",
       "!**/node_modules/**/{*.pdb,*.ipdb,*.iobj,*.lib,*.exp,*.obj}",
-      "!**/node_modules/**/{deps,bin,src,test,tests,__tests__}/**",
+      "!**/node_modules/**/{deps,bin,test,tests,__tests__}/**",
       "!**/node_modules/**/*.{ts,cc,cpp,h,hpp,c,markdown,map}"
     ],
     "win": {
